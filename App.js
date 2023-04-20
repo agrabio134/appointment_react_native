@@ -7,8 +7,7 @@ import HomeScreen from './components/Home';
 import AboutScreen from './components/About';
 import ProfileScreen from './components/Profile';
 import AppointmentScreen from './components/Appointment';
-import LoginScreen from './components/LoginScreen';
-import CreateUserScreen from './components/CreateUserScreen';
+
 
 // const AuthStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,7 +19,7 @@ const MyTheme = {
     background: '#000',
     text: '#fff',
     card: '#121212',
-    border: '#fff',
+    border: '#928b97',
   },
 };
 
@@ -117,5 +116,7 @@ const App = () => {
     </NavigationContainer>
   );
 };
+
+
 
 export default App;
