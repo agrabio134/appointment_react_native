@@ -14,7 +14,7 @@ const HomeScreenStyles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 10,
-    shadowColor: "#ff00ca",
+    shadowColor: "#e0e0e0",
     shadowOffset: {
       width: 0,
       height: 2,

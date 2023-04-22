@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from './components/Home';
+import AppointmentScreen from './components/Appointment';
 import AboutScreen from './components/About';
 import ProfileScreen from './components/Profile';
-import AppointmentScreen from './components/Appointment';
+// import AuthNavigator from './navigation/AuthNavigator';
 
 
-// const AuthStack = createStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// Import the functions you need from the SDKs you need
+
+
+// const analytics = getAnalytics(app);
+
 const Tab = createBottomTabNavigator();
 
 const MyTheme = {
@@ -20,30 +24,12 @@ const MyTheme = {
     text: '#fff',
     card: '#121212',
     border: '#928b97',
+    
   },
 };
 
-// const AuthNavigator = () => {
-//   return (
-//     <AuthStack.Navigator>
-//       <AuthStack.Screen
-//         name="Login"
-//         component={LoginScreen}
-//         options={{ headerShown: false }}
-//       />
-//       <AuthStack.Screen
-//         name="Register"
-//         component={CreateUserScreen}
-//         options={{ headerShown: false }}
-//       />
-//     </AuthStack.Navigator>
-//   );
-// };
-
 const App = () => {
   return (
-    // before this, head to login
-
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -116,7 +102,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-
-
+ 
 export default App;

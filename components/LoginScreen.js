@@ -1,44 +1,44 @@
 import React, { useState } from 'react';
 import { Alert, View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import axios from 'axios';
+
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBZvgTJK1oQfqzx8m-RD7rLQPx_i__Z6X4",
+  authDomain: "tattoo-appointment-254ae.firebaseapp.com",
+  databaseURL: "https://tattoo-appointment-254ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "tattoo-appointment-254ae",
+  storageBucket: "tattoo-appointment-254ae.appspot.com",
+  messagingSenderId: "279786016572",
+  appId: "1:279786016572:web:70c722e708588793a25839",
+  measurementId: "G-3CM6F9ZHXL"
+};
+
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
 
 const LoginScreen = ({ onLoginSuccess }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    if (!email || !password) {
-      Alert.alert('Error', 'Please enter email and password', [{ text: 'OK' }]);
-      return;
-    }
-
-    const data = {
-      email,
-      password,
-    };
 
     try {
-      const response = await axios.post('https://tattoobookingsystem.000webhostapp.com/appointment_api/login', data, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      // login user
+      const auth = firebase.auth();
+      const userCredential = await auth.signInWithEmailAndPassword(email, password);
+      onLoginSuccess(userCredential.user);
+      
+      
 
-      const responseData = response.data;
-
-      if (responseData.status.remarks === 'success') {
-        Alert.alert('Success', 'Login Successfully', [{ text: 'OK' }]);
-        setEmail('');
-        setPassword('');
-
-        console.log(responseData.payload);
-        onLoginSuccess(responseData.payload);
-      } else {
-        Alert.alert('Error', 'Invalid email and password', [{ text: 'OK' }]);
-      }
+       
     } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-      Alert.alert('Error', 'Please enter email and password', [{ text: 'OK' }]);
+      Alert.alert('Error', error.message);
+      console.error(error);
     }
   };
   return (

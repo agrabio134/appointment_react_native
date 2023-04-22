@@ -8,12 +8,35 @@ import {
   // Picker,
 } from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import auth from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
+import firebase from "firebase/compat/app";
+
+import 'firebase/firestore';
+
+// Initialize Firebase
+firebase.initializeApp({
+  apiKey: "AIzaSyBZvgTJK1oQfqzx8m-RD7rLQPx_i__Z6X4",
+  authDomain: "tattoo-appointment-254ae.firebaseapp.com",
+  databaseURL: "https://tattoo-appointment-254ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "tattoo-appointment-254ae",
+  storageBucket: "tattoo-appointment-254ae.appspot.com",
+  messagingSenderId: "279786016572",
+  appId: "1:279786016572:web:70c722e708588793a25839",
+  measurementId: "G-3CM6F9ZHXL"
+
+ 
+});
+
+// Access the Firestore database
+// const db = firebase.firestore();
 const genders = [
   { label: 'Male', value: 'male' },
   { label: 'Female', value: 'female' },
   { label: 'Other', value: 'other' },
 ];
+
 const CreateUserScreen = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -25,53 +48,44 @@ const CreateUserScreen = () => {
   const [birthdate, setBirthdate] = useState('');
 
   const handleCreateUser = async () => {
-    const data = {
-      fname: firstName,
-      lname: lastName,
-      contact_number: contactNumber,
-      gender,
-      birthdate,
-      email,
-      password,
-    };
-
-    console.log(JSON.stringify(data));
-
-
     try {
-      const response = await fetch(
-        'https://tattoobookingsystem.000webhostapp.com/appointment_api/register',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        }
-      );
+      const auth = firebase.auth();
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-      setMessage('User created successfully');
-      setFirstName('');
-      setLastName('');
-      setContactNumber('');
-      setGender('');
-      setBirthdate('');
-      setEmail('');
-      setPassword('');
-    } catch (error) {
-      console.error('There was a problem with the fetch operation:', error);
-      swal({
-        title: 'Error',
-        text: 'There was a problem creating the user',
-        icon: 'error',
+      const db = firebase.firestore();
+      // insert data into firestore
+      const docRef = await setDoc(doc(db, "users", 
+      
+      auth.currentUser.uid
+      ), {
+        firstName: firstName,
+        lastName: lastName,
+        birthdate: birthdate,
+        email: email,
+        gender: gender,
+        contactNumber: contactNumber
+        
       });
+
+
+
+      
+
+
+      
+     
+      const user = await auth.createUserWithEmailAndPassword(email, password);
+
+      setMessage('User account created successfully!');
+
+      
+     
+      
+
+
+      console.log('User account created successfully!');
+    } catch (error) {
+      setMessage(error.message);
+      console.log(error.message);
     }
   };
 
@@ -130,16 +144,9 @@ const CreateUserScreen = () => {
         </View>
         <View style={styles.column}>
           <View style={styles.column}>
-           <DatePicker
-  style={[styles.date, { zIndex: 100 }]}
-  date={birthdate}
-  mode="date"
-  format="MM/DD/YYYY"
-  confirmBtnText="Confirm"
-  cancelBtnText="Cancel"
-  onDateChange={date => setBirthdate(date)}
-/>
+            <TextInput style={styles.input} placeholder="Birthdate" value={birthdate} onChangeText={setBirthdate} />
 
+           
           </View>
         </View>
         <View style={styles.column}>
@@ -165,7 +172,6 @@ const CreateUserScreen = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

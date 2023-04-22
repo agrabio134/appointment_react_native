@@ -42,32 +42,34 @@ const AboutScreen = () => {
         </TouchableOpacity>
 
         <View style={styles.textContainer}>
+          <Text style={styles.title}>Welcome to Joey's Ink</Text>
+          <Text style={styles.subtitle}>
+            The Premier Appointment App for Tattoo Enthusiasts
+          </Text>
 
-        <Text style={styles.title}>Welcome to Joey's Ink</Text>
-        <Text style={styles.subtitle}>
-          The Premier Appointment App for Tattoo Enthusiasts
-        </Text>
-
-        <View style={styles.profileInfoContainer}>
-          <View style={styles.profileContainer}>
-            <Image
-              source={require("../assets/images/image1.jpg")}
-              resizeMode="contain"
-              style={styles.profile}
-            />
+          <View style={styles.profileInfoContainer}>
+            <View style={styles.profileContainer}>
+              <Image
+                source={require("../assets/images/image1.jpg")}
+                resizeMode="contain"
+                style={styles.profile}
+              />
+            </View>
+            <View style={styles.infoContainer}>
+              <Text style={styles.info}>
+                Welcome to Joey's Ink, the premier appointment app for tattoo
+                enthusiasts in Del Pilar Street, Bo. Barretto, Olongapo City,
+                Zambales, Philippines. Our shop is owned and operated by the
+                talented Joey Agrabio, who is not only the owner but also the
+                artist behind every stunning tattoo creation.
+              </Text>
+            </View>
           </View>
           <View style={styles.infoContainer}>
             <Text style={styles.info}>
-              Welcome to Joey's Ink, the premier appointment app for tattoo
-              enthusiasts in Del Pilar Street, Bo. Barretto, Olongapo City,
-              Zambales, Philippines. Our shop is owned and operated by the
-              talented Joey Agrabio, who is not only the owner but also the
-              artist behind every stunning tattoo creation.
-            </Text>
-            <Text style={styles.info}>
               At Joey's Ink, we understand the importance of personalized and
               professional tattoo services, which is why we strive to make every
-              client's experience unforgettable. We believe that every tattoo is
+              client's experience unforgettable.We believe that every tattoo is
               a unique work of art that deserves to be treated with the utmost
               care and attention to detail . That's why we work closely with our
               clients to ensure that their vision is brought to life in the form
@@ -80,13 +82,6 @@ const AboutScreen = () => {
               and simple design or a large and intricate piece, we have the
               skills and expertise to make your tattoo dreams a reality.
             </Text>
-            <Text style={styles.info}>
-              So why wait? Book your appointment with us today and experience
-              the Joey's Ink difference for yourself. We can't wait to bring
-              your tattoo vision to life and make your experience with us a
-              memorable one.
-            </Text>
-          </View>
           </View>
         </View>
       </ScrollView>
@@ -108,7 +103,7 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "flex-end",
   },
-  textContainer:{
+  textContainer: {
     paddingHorizontal: 10,
   },
   logoContainer: {
@@ -142,9 +137,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
     marginBottom: 10,
     color: "#fff",
+    textAlign: "center",
   },
   subtitle: {
     fontSize: 18,
+    textAlign: "center",
+
     color: "#fff",
 
     fontStyle: "italic",
@@ -153,14 +151,14 @@ const styles = StyleSheet.create({
   profileInfoContainer: {
     flexDirection: "row",
     marginTop: 20,
-
   },
   profileContainer: {
-    flex: .8,
+    flex: 0.8,
   },
   profile: {
     width: "100%",
     height: 200,
+
     borderRadius: 5,
   },
   infoContainer: {
@@ -169,9 +167,10 @@ const styles = StyleSheet.create({
   },
   info: {
     color: "#fff",
-    fontSize: 11,
+    fontSize: 12,
     marginBottom: 10,
     lineHeight: 22,
+    textAlign: "justify",
   },
 });
 
