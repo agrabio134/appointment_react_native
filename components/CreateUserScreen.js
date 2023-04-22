@@ -46,16 +46,22 @@ const CreateUserScreen = () => {
   const [message, setMessage] = useState('');
   const [gender, setGender] = useState('');
   const [birthdate, setBirthdate] = useState('');
-
+  
   const handleCreateUser = async () => {
+
+    // add form validation
+    if (!firstName || !lastName || !contactNumber || !email || !password) {
+      setMessage('Please fill in all fields!');
+      return;
+    }
+
     try {
+
       const auth = firebase.auth();
 
-      const db = firebase.firestore();
+      const db = getFirestore();
       // insert data into firestore
-      const docRef = await setDoc(doc(db, "users", 
-      
-      auth.currentUser.uid
+      const docRef = await setDoc(doc(db, "users", auth.currentUser.uid
       ), {
         firstName: firstName,
         lastName: lastName,
@@ -65,6 +71,9 @@ const CreateUserScreen = () => {
         contactNumber: contactNumber
         
       });
+      // create user
+
+
 
 
 
@@ -74,6 +83,7 @@ const CreateUserScreen = () => {
       
      
       const user = await auth.createUserWithEmailAndPassword(email, password);
+      
 
       setMessage('User account created successfully!');
 
