@@ -14,25 +14,25 @@ const AppointmentStyles = StyleSheet.create({
       fontSize: 24,
       fontWeight: 'bold',
       marginBottom: 20,
-      color: '#fff'
+      color: '#efece9'
     },
     input: {
       width: '97%',
       height: 40,
       borderWidth: 1,
-      borderColor: '#ccc',
+      borderColor: '#efece9',
       borderRadius: 5,
       padding: 10,
       marginBottom: 10,
-      color: '#fff',
+      color: '#efece9',
   
     },
     calendar: {
       marginBottom: 20,
       borderWidth: 1,
-      borderColor: '#ccc',
+      borderColor: '#efece9',
       borderRadius: 5,
-      width: 350,
+      width: 330,
       height: 370,
     }
     

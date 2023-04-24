@@ -8,7 +8,7 @@ const HomeScreenStyles = StyleSheet.create({
     backgroundColor: "#222",
   },
   profileCardContainer: {
-    backgroundColor: "#0a0a0a",
+    backgroundColor: "#050505",
     borderRadius: 10,
     padding:10,
     flexDirection: "row",
@@ -41,7 +41,7 @@ const HomeScreenStyles = StyleSheet.create({
     marginTop: 2,
   },
   profileButton: {
-    backgroundColor: "#b82c49",
+    backgroundColor: "#610c27",
     color: "#fff",
     paddingHorizontal: 15,
     paddingVertical: 8,

@@ -6,6 +6,9 @@ import AppointmentScreen from './components/Appointment';
 import AboutScreen from './components/About';
 import ProfileScreen from './components/Profile';
 // import AuthNavigator from './navigation/AuthNavigator';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore"; // Add this line
 
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -29,6 +32,24 @@ const MyTheme = {
 };
 
 const App = () => {
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBZvgTJK1oQfqzx8m-RD7rLQPx_i__Z6X4",
+    authDomain: "tattoo-appointment-254ae.firebaseapp.com",
+    databaseURL: "https://tattoo-appointment-254ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "tattoo-appointment-254ae",
+    storageBucket: "tattoo-appointment-254ae.appspot.com",
+    messagingSenderId: "279786016572",
+    appId: "1:279786016572:web:70c722e708588793a25839",
+    measurementId: "G-3CM6F9ZHXL"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(); // Initialize the firestore module
+
+
+const iconColor = "#ddd9ce";
+
   return (
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
@@ -39,7 +60,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'home' : 'home-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Appointment') {
@@ -47,7 +68,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'calendar' : 'calendar-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'About') {
@@ -59,7 +80,7 @@ const App = () => {
                       : 'ios-information-circle-outline'
                   }
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Profile') {
@@ -67,7 +88,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'person-circle' : 'person-circle-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Register') {
@@ -79,7 +100,7 @@ const App = () => {
                       : 'ios-information-circle-outline'
                   }
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             }
@@ -92,7 +113,11 @@ const App = () => {
           component={HomeScreen}
           options={{ tabBarBadge: 3 }}
         />
-        <Tab.Screen name="Appointment" component={AppointmentScreen} />
+        <Tab.Screen name="Appointment" component={AppointmentScreen}
+        
+
+
+        />
 
         {/* <Tab.Screen name="Auth" component={AuthNavigator} /> */}
         <Tab.Screen name="About" component={AboutScreen} />
