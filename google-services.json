@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "279786016572",
+    "project_id": "tattoo-appointment-254ae",
+    "storage_bucket": "tattoo-appointment-254ae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279786016572:android:9ed370d55a73c555a25839",
+        "android_client_info": {
+          "package_name": "com.agrabio134.tattoo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "279786016572-qll6ohmjrc3n5n8vm8l962qlv1mgrrg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyL-CSNLfseL54iYe1JzU0vvRTCM36_j0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "279786016572-hgq9p642fbh9a9udcgnbt81hjduevt3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

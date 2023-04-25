@@ -7,6 +7,48 @@ const HomeScreenStyles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#222",
   },
+  profileCardContainer: {
+    backgroundColor: "#050505",
+    borderRadius: 10,
+    padding:10,
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+    shadowColor: "#e0e0e0",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  profileImage: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    marginRight: 10,
+  },
+  profileName: {
+    fontWeight: "bold",
+    color: "white",
+
+    fontSize: 16,
+  },
+  profileTitle: {
+    fontSize: 14,
+    color: "white",
+    marginTop: 2,
+  },
+  profileButton: {
+    backgroundColor: "#610c27",
+    color: "#fff",
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+
   headerContainer: {
     justifyContent: "center",
     alignItems: "center",
@@ -56,12 +98,12 @@ const HomeScreenStyles = StyleSheet.create({
     fontSize: 20,
   },
   header: {
-    fontSize: 32,
+    fontSize: 22,
     backgroundColor: "#fff",
   },
   logo:{
-    width: 100,
-    height: 100,
+    width: 70,
+    height: 70,
   }
 
 });

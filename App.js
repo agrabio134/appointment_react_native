@@ -1,16 +1,22 @@
 import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from './components/Home';
+import AppointmentScreen from './components/Appointment';
 import AboutScreen from './components/About';
 import ProfileScreen from './components/Profile';
-import AppointmentScreen from './components/Appointment';
-import LoginScreen from './components/LoginScreen';
-import CreateUserScreen from './components/CreateUserScreen';
+// import AuthNavigator from './navigation/AuthNavigator';
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore"; // Add this line
 
-// const AuthStack = createStackNavigator();
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// Import the functions you need from the SDKs you need
+
+
+// const analytics = getAnalytics(app);
+
 const Tab = createBottomTabNavigator();
 
 const MyTheme = {
@@ -20,31 +26,31 @@ const MyTheme = {
     background: '#000',
     text: '#fff',
     card: '#121212',
-    border: '#fff',
+    border: '#928b97',
+    
   },
 };
 
-// const AuthNavigator = () => {
-//   return (
-//     <AuthStack.Navigator>
-//       <AuthStack.Screen
-//         name="Login"
-//         component={LoginScreen}
-//         options={{ headerShown: false }}
-//       />
-//       <AuthStack.Screen
-//         name="Register"
-//         component={CreateUserScreen}
-//         options={{ headerShown: false }}
-//       />
-//     </AuthStack.Navigator>
-//   );
-// };
-
 const App = () => {
-  return (
-    // before this, head to login
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBZvgTJK1oQfqzx8m-RD7rLQPx_i__Z6X4",
+    authDomain: "tattoo-appointment-254ae.firebaseapp.com",
+    databaseURL: "https://tattoo-appointment-254ae-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "tattoo-appointment-254ae",
+    storageBucket: "tattoo-appointment-254ae.appspot.com",
+    messagingSenderId: "279786016572",
+    appId: "1:279786016572:web:70c722e708588793a25839",
+    measurementId: "G-3CM6F9ZHXL"
+  };
+  
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore(); // Initialize the firestore module
+
+
+const iconColor = "#ddd9ce";
+
+  return (
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -54,7 +60,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'home' : 'home-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Appointment') {
@@ -62,7 +68,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'calendar' : 'calendar-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'About') {
@@ -74,7 +80,7 @@ const App = () => {
                       : 'ios-information-circle-outline'
                   }
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Profile') {
@@ -82,7 +88,7 @@ const App = () => {
                 <Ionicons
                   name={focused ? 'person-circle' : 'person-circle-outline'}
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             } else if (route.name === 'Register') {
@@ -94,7 +100,7 @@ const App = () => {
                       : 'ios-information-circle-outline'
                   }
                   size={size}
-                  color={color}
+                  color={iconColor}
                 />
               );
             }
@@ -107,7 +113,11 @@ const App = () => {
           component={HomeScreen}
           options={{ tabBarBadge: 3 }}
         />
-        <Tab.Screen name="Appointment" component={AppointmentScreen} />
+        <Tab.Screen name="Appointment" component={AppointmentScreen}
+        
+
+
+        />
 
         {/* <Tab.Screen name="Auth" component={AuthNavigator} /> */}
         <Tab.Screen name="About" component={AboutScreen} />
@@ -117,5 +127,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
+ 
 export default App;

@@ -11,7 +11,7 @@ import {
 
 import HomeScreenStyles from "./Styles/HomeScreenStyle";
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const images = [
     {
       source: require("../assets/images/image1.jpg"),
@@ -66,11 +66,10 @@ const HomeScreen = () => {
   return (
     <SafeAreaView style={HomeScreenStyles.container}>
       <View style={HomeScreenStyles.headerContainer}>
-        <Image
+        {/* <Image
           style={HomeScreenStyles.logo}
           source={require("../assets/images/logo-icon.png")}
-        />
-
+        /> */}
         <Text style={HomeScreenStyles.headerText}>JOEY'S INK</Text>
       </View>
       <View style={HomeScreenStyles.carouselContainer}>
@@ -116,6 +115,24 @@ const HomeScreen = () => {
               ]}
             />
           ))}
+        </View>
+      </View>
+      <View style={HomeScreenStyles.profileCardContainer}>
+        <Image
+          source={require("../assets/images/logo-icon.png")}
+          style={HomeScreenStyles.profileImage}
+        />
+        <View>
+          <Text style={HomeScreenStyles.profileName}>Joey Agrabio</Text>
+          <Text style={HomeScreenStyles.profileTitle}>Tattoo Artist/Owner</Text>
+
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("About");
+            }}
+          >
+            <Text style={HomeScreenStyles.profileButton}>View Profile</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

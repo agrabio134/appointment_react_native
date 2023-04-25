@@ -25,7 +25,13 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.agrabio134.tattoo_app"
+      "package": "com.agrabio134.tattoo_app",
+      "config": {
+        "googleSignIn": {
+          "apiKey": "AIzaSyDyL-CSNLfseL54iYe1JzU0vvRTCM36_j0"
+        },
+        "googleServicesFile": "./google-services.json"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
