@@ -9,7 +9,7 @@ import {
   ScrollView,
   // Picker,
 } from "react-native";
-import DatePicker from "react-native-datepicker";
+// import DatePicker from "react-native-datepicker";
 import auth from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 
